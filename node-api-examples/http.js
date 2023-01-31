@@ -21,12 +21,20 @@ const server = http
       response.writeHead(200, {"Content-Type": "text/html" })
       response.write("<h1>Hello Home</h1>");
       response.end();
-    } else{
+    } else if (request.url === "/data") {
+      response.writeHead(200, {"Content-Type": "application/json" })
+      response.write(JSON.stringify({
+        data: {
+          name: "Kashanna"
+        }
+      }));
+      response.end();
+    }else{
       response.writeHead(404);
       response.end();
     }
    });
-  server.listen(8080);
+  
 
-  export default server;
+  module.exports = server;
 
